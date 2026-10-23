@@ -63,35 +63,6 @@ document.querySelector('#rsvpForm').addEventListener('submit', event => {
   showToast(`Cảm ơn ${name}! Hẹn gặp bạn trong ngày vui của chúng mình.`);
 });
 
-const suggestions = ['Chúc hai bạn trăm năm hạnh phúc, mãi yêu thương và đồng hành cùng nhau!', 'Chúc mừng ngày vui! Mong gia đình nhỏ luôn ngập tràn tiếng cười và bình an.', 'Chúc Ngọc Giao và Phương Hiển một hành trình hôn nhân thật rực rỡ và viên mãn!'];
-document.querySelector('#magicWish').addEventListener('click', () => {
-  document.querySelector('#guestWish').value = suggestions[Math.floor(Math.random() * suggestions.length)];
-});
-
-function renderWishes() {
-  const wishes = JSON.parse(localStorage.getItem('wedding-wishes') || '[]');
-  document.querySelector('#emptyWishes').hidden = wishes.length > 0;
-  document.querySelector('#wishes').innerHTML = wishes.map(item => `<div class="wish"><strong>${escapeHtml(item.name)}</strong>${escapeHtml(item.wish)}</div>`).join('');
-}
-function escapeHtml(value) {
-  const node = document.createElement('div');
-  node.textContent = value;
-  return node.innerHTML;
-}
-document.querySelector('#wishForm').addEventListener('submit', event => {
-  event.preventDefault();
-  const name = document.querySelector('#guestName').value.trim();
-  const wish = document.querySelector('#guestWish').value.trim();
-  if (!name || !wish) return;
-  const wishes = JSON.parse(localStorage.getItem('wedding-wishes') || '[]');
-  wishes.unshift({ name, wish });
-  localStorage.setItem('wedding-wishes', JSON.stringify(wishes.slice(0, 8)));
-  event.target.reset();
-  renderWishes();
-  showToast('Cảm ơn bạn đã gửi một lời chúc thật đẹp!');
-});
-renderWishes();
-
 const revealObserver = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (!entry.isIntersecting) return;
