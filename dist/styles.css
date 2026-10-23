@@ -36,3 +36,6 @@
 .navy-card>.decor{z-index:1;opacity:.92}.navy-card>h3,.navy-card>.families,.navy-card>.full-name,.navy-card>.role,.navy-card>.ampersand,.navy-card>.ceremony-heading,.navy-card>.date-grid,.navy-card>.party-intro,.navy-card>.times,.navy-card>.count-label,.navy-card>.countdown,.navy-card>.calendar,.navy-card>.text-button{position:relative;z-index:3}
 .family-right{width:160px;right:-88px;top:292px}.family-left{width:210px;left:-150px}
 @media(max-width:700px){.family-right{width:112px;right:-48px;top:296px}.family-left{width:132px;left:-94px}.navy-card>.full-name{padding-inline:8px}}
+
+/* Emphasize the key ceremonial details without making the invitation feel heavy */
+.navy-card h3,.ceremony-heading strong,.party-intro strong,.times span,.date-grid b{font-weight:700}.ceremony-heading strong,.party-intro strong{letter-spacing:1.05px}.times span{color:#fff7e7;letter-spacing:.8px}.date-grid b{color:#fffaf0}
