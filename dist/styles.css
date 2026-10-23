@@ -31,3 +31,8 @@
 .invitation-card h1,.invitation-card .tiny-divider,.invitation-card .cover-date,.invitation-card .dear,.invitation-card .open-button{z-index:3}
 .cover-flower{z-index:1;pointer-events:none}.cover-flower-left{left:-105px;top:10px;width:190px}.cover-flower-right{right:-105px;bottom:-72px;width:190px}
 @media(max-width:700px){.cover-flower{width:145px}.cover-flower-left{left:-96px;top:22px}.cover-flower-right{right:-96px;bottom:-38px}}
+
+/* Decorative florals must never obscure wedding information */
+.navy-card>.decor{z-index:1;opacity:.92}.navy-card>h3,.navy-card>.families,.navy-card>.full-name,.navy-card>.role,.navy-card>.ampersand,.navy-card>.ceremony-heading,.navy-card>.date-grid,.navy-card>.party-intro,.navy-card>.times,.navy-card>.count-label,.navy-card>.countdown,.navy-card>.calendar,.navy-card>.text-button{position:relative;z-index:3}
+.family-right{width:170px;right:-135px;top:300px}.family-left{width:210px;left:-150px}
+@media(max-width:700px){.family-right{width:108px;right:-80px;top:302px}.family-left{width:132px;left:-94px}.navy-card>.full-name{padding-inline:8px}}
