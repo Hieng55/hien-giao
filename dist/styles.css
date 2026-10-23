@@ -26,3 +26,8 @@
 .venue-kicker{font-size:12px!important}.date-grid small{position:relative;left:0;white-space:normal;line-height:1.45;margin-top:4px}
 .families small{line-height:1.45}.privacy,footer{line-height:1.6}.venue-kicker{line-height:1.5}
 @media(max-width:700px){.eyebrow,.families span,.families small,.role,.date-grid span,.date-grid small,.times span,.count-label,.weekdays span,.ceremony-heading,.party-intro,.venue-kicker,.venue p,.guestbook-intro,.empty-wishes,.privacy,footer,.dialog-kicker,.dear{font-size:12px}.families{gap:8px}.families strong{font-size:12px}.date-grid small{line-height:1.35}.venue p{line-height:1.55}}
+
+/* Keep opening florals clear of the invitation copy */
+.invitation-card h1,.invitation-card .tiny-divider,.invitation-card .cover-date,.invitation-card .dear,.invitation-card .open-button{z-index:3}
+.cover-flower{z-index:1;pointer-events:none}.cover-flower-left{left:-105px;top:10px;width:190px}.cover-flower-right{right:-105px;bottom:-72px;width:190px}
+@media(max-width:700px){.cover-flower{width:145px}.cover-flower-left{left:-96px;top:22px}.cover-flower-right{right:-96px;bottom:-38px}}
