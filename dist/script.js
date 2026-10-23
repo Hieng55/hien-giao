@@ -1,6 +1,8 @@
 const openingScreen = document.querySelector('#openingScreen');
 const mainContent = document.querySelector('#mainContent');
 const toast = document.querySelector('#toast');
+const scrollProgress = document.querySelector('#scrollProgress');
+document.documentElement.classList.add('js-ready');
 
 function showToast(message) {
   toast.textContent = message;
@@ -11,9 +13,10 @@ function showToast(message) {
 
 document.querySelector('#openInvitation').addEventListener('click', () => {
   openingScreen.classList.add('opened');
+  mainContent.classList.add('is-open');
   document.body.classList.remove('locked');
   mainContent.setAttribute('aria-hidden', 'false');
-  setTimeout(() => document.querySelector('.hero').scrollIntoView({ behavior: 'smooth' }), 250);
+  setTimeout(() => scrollTo({ top: 0, left: 0, behavior: 'smooth' }), 250);
 });
 
 const weddingDate = new Date('2026-11-22T18:00:00+07:00');
@@ -21,7 +24,7 @@ function updateCountdown() {
   const difference = weddingDate - new Date();
   const node = document.querySelector('#countdown');
   if (difference <= 0) {
-    node.textContent = 'Hôm nay là ngày hạnh phúc!';
+    node.textContent = 'Hôm nay là ngày chúng mình về chung một nhà!';
     return;
   }
   const days = Math.floor(difference / 86400000);
@@ -44,7 +47,7 @@ document.querySelector('#addCalendar').addEventListener('click', () => {
   link.download = 'le-cuoi-ngoc-giao-phuong-hien.ics';
   link.click();
   URL.revokeObjectURL(link.href);
-  showToast('Đã tạo lịch cưới cho bạn');
+  showToast('Ngày vui đã được thêm vào lịch của bạn');
 });
 
 const dialog = document.querySelector('#rsvpDialog');
@@ -57,7 +60,7 @@ document.querySelector('#rsvpForm').addEventListener('submit', event => {
   localStorage.setItem('wedding-rsvp', JSON.stringify(response));
   dialog.close();
   event.target.reset();
-  showToast(`Cảm ơn ${name}, đã lưu xác nhận của bạn!`);
+  showToast(`Cảm ơn ${name}! Hẹn gặp bạn trong ngày vui của chúng mình.`);
 });
 
 const suggestions = ['Chúc hai bạn trăm năm hạnh phúc, mãi yêu thương và đồng hành cùng nhau!', 'Chúc mừng ngày vui! Mong gia đình nhỏ luôn ngập tràn tiếng cười và bình an.', 'Chúc Ngọc Giao và Phương Hiển một hành trình hôn nhân thật rực rỡ và viên mãn!'];
@@ -85,11 +88,30 @@ document.querySelector('#wishForm').addEventListener('submit', event => {
   localStorage.setItem('wedding-wishes', JSON.stringify(wishes.slice(0, 8)));
   event.target.reset();
   renderWishes();
-  showToast('Lời chúc của bạn đã được lưu');
+  showToast('Cảm ơn bạn đã gửi một lời chúc thật đẹp!');
 });
 renderWishes();
 
 const revealObserver = new IntersectionObserver(entries => {
-  entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+    entry.target.classList.add('visible');
+    revealObserver.unobserve(entry.target);
+  });
 }, { threshold: .08 });
 document.querySelectorAll('.reveal').forEach(node => revealObserver.observe(node));
+
+let scrollTicking = false;
+function updateScrollEffects() {
+  const maxScroll = document.documentElement.scrollHeight - innerHeight;
+  const progress = maxScroll > 0 ? scrollY / maxScroll : 0;
+  scrollProgress.style.transform = `scaleX(${Math.min(1, Math.max(0, progress))})`;
+  document.documentElement.style.setProperty('--page-scroll', `${Math.min(scrollY * .055, 55)}px`);
+  scrollTicking = false;
+}
+addEventListener('scroll', () => {
+  if (scrollTicking) return;
+  scrollTicking = true;
+  requestAnimationFrame(updateScrollEffects);
+}, { passive: true });
+updateScrollEffects();

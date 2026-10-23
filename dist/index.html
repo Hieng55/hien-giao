@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body class="locked">
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
   <div class="opening-screen" id="openingScreen" aria-label="Mở thiệp cưới">
     <span class="drift drift-1">✣</span><span class="drift drift-2">✣</span>
     <span class="drift drift-3">✣</span><span class="drift drift-4">✣</span>
@@ -19,7 +20,7 @@
       <h1><span>Ngọc Giao</span><small>&amp;</small><span>Phương Hiển</span></h1>
       <div class="tiny-divider"><i></i><b>❧</b><i></i></div>
       <p class="cover-date">22 tháng 11, 2026</p>
-      <p class="dear">Thân Mời</p>
+      <p class="dear">Trân trọng kính mời</p>
       <button class="open-button" id="openInvitation" type="button">Mở thiệp</button>
     </div>
   </div>
@@ -41,7 +42,7 @@
     <section class="navy-card family-card reveal">
       <img class="decor family-left" src="assets/flower2-decoration.webp" alt="">
       <img class="decor family-right" src="assets/flower3-decoration.webp" alt="">
-      <h3>THÔNG TIN LỄ CƯỚI</h3>
+      <h3>THÔNG TIN HÔN LỄ</h3>
       <div class="families">
         <div><span>Ông Bà</span><strong>Huỳnh Chính<br>Nguyễn Thị Mến</strong><small>X. Bà Điểm, TP. HCM</small></div>
         <i></i>
@@ -52,7 +53,7 @@
       <span class="ampersand">&amp;</span>
       <p class="full-name">Lượng Phương Hiển</p>
       <span class="role">QUÝ NAM</span>
-      <p class="ceremony-heading">LỄ VU QUY ĐƯỢC CỬ HÀNH TẠI<br>TƯ GIA</p>
+      <p class="ceremony-heading">LỄ VU QUY ĐƯỢC CỬ HÀNH TRỌNG THỂ<br>TẠI TƯ GIA</p>
       <div class="date-grid">
         <div><span>VÀO LÚC 09:00</span><strong>22</strong><small>(TỨC NGÀY 14 THÁNG 10 NĂM BÍNH NGỌ)</small></div>
         <div><span>CHỦ NHẬT</span><b>THÁNG 11<br>2026</b></div>
@@ -63,13 +64,13 @@
       <img class="decor party-left" src="assets/flower5-decoration.webp" alt="">
       <img class="decor party-right" src="assets/flower6-decoration.webp" alt="">
       <h3>THÔNG TIN TIỆC CƯỚI</h3>
-      <p class="party-intro">TIỆC CƯỚI SẼ DIỄN RA VÀO LÚC:</p>
+      <p class="party-intro">TRÂN TRỌNG KÍNH MỜI QUÝ KHÁCH<br>ĐẾN DỰ TIỆC CƯỚI VÀO LÚC:</p>
       <div class="date-grid party-date">
         <div><span>18:00</span><strong>22</strong><small>(TỨC NGÀY 14 THÁNG 10 NĂM BÍNH NGỌ)</small></div>
         <div><span>CHỦ NHẬT</span><b>THÁNG 11<br>2026</b></div>
       </div>
       <div class="times"><div><span>ĐÓN KHÁCH</span><strong>18:00</strong></div><div><span>KHAI TIỆC</span><strong>19:00</strong></div></div>
-      <p class="count-label">Cùng đếm ngược</p>
+      <p class="count-label">Thời gian còn lại đến ngày chung đôi</p>
       <p class="countdown" id="countdown">Đang tính thời gian...</p>
       <div class="calendar">
         <p>Tháng 11 / 2026</p>
@@ -82,7 +83,8 @@
     <button class="pill-button reveal" id="rsvpButton" type="button">XÁC NHẬN THAM DỰ</button>
 
     <section class="venue reveal">
-      <h3>TIỆC CƯỚI SẼ TỔ CHỨC TẠI NHÀ HÀNG LÊ ĐÔNG PHƯƠNG</h3>
+      <p class="venue-kicker">ĐỊA ĐIỂM CHUNG VUI</p>
+      <h3>TIỆC CƯỚI ĐƯỢC TỔ CHỨC TẠI<br>NHÀ HÀNG LÊ ĐÔNG PHƯƠNG</h3>
       <p>491 Nguyễn Văn Quá, P. Đông Hưng Thuận, TP. HCM</p>
       <div class="map-frame">
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.6772062656505!2d106.6265784758389!3d10.835995958090527!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317529c392f0d44d%3A0x99c6ed18cb92319b!2zVHJ1bmcgVMOibSBI4buZaSBOZ2jhu4sgJiBUaeG7h2MgQ8aw4bubaSBMRSBET05HIFBIVU9ORyBOR1VZ4buETiBWxIJOIFFVw4E!5e0!3m2!1sen!2s!4v1792791886927!5m2!1sen!2s" width="600" height="450" style="border:0" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" title="Bản đồ Nhà hàng Lê Đông Phương"></iframe>
@@ -93,12 +95,13 @@
     <section class="guestbook reveal">
       <img class="guest-flower" src="assets/flower2-decoration.webp" alt="">
       <h3>SỔ LƯU BÚT</h3>
+      <p class="guestbook-intro">Gửi đôi lời yêu thương đến cô dâu và chú rể</p>
       <form id="wishForm">
-        <label><span class="sr-only">Tên của bạn</span><input id="guestName" required maxlength="60" placeholder="Nhập tên*"></label>
-        <label><span class="sr-only">Lời chúc</span><textarea id="guestWish" required maxlength="300" placeholder="Nhập lời chúc*"></textarea></label>
+        <label><span class="sr-only">Tên của bạn</span><input id="guestName" required maxlength="60" placeholder="Tên của bạn *"></label>
+        <label><span class="sr-only">Lời chúc</span><textarea id="guestWish" required maxlength="300" placeholder="Lời chúc dành cho cô dâu chú rể *"></textarea></label>
         <div class="form-actions"><button class="magic" type="button" id="magicWish" aria-label="Gợi ý lời chúc">🪄</button><button class="submit-wish" type="submit">GỬI LỜI CHÚC</button></div>
       </form>
-      <p class="empty-wishes" id="emptyWishes">Chưa có lời chúc nào. Hãy là người đầu tiên!</p>
+      <p class="empty-wishes" id="emptyWishes">Hãy là người đầu tiên gửi lời chúc đến đôi uyên ương.</p>
       <div class="wishes" id="wishes"></div>
     </section>
 
@@ -111,9 +114,10 @@
       <button class="dialog-close" value="cancel" aria-label="Đóng">×</button>
       <p class="dialog-kicker">22 · 11 · 2026</p>
       <h2>Xác nhận tham dự</h2>
+      <p class="dialog-intro">Sự hiện diện của bạn sẽ làm ngày vui của chúng mình thêm trọn vẹn.</p>
       <label>Họ và tên<input id="rsvpName" required placeholder="Tên của bạn"></label>
-      <label>Bạn sẽ tham dự?
-        <select id="rsvpChoice"><option value="Có">Có, tôi sẽ đến</option><option value="Không">Rất tiếc, tôi không thể đến</option></select>
+      <label>Bạn có thể đến chung vui?
+        <select id="rsvpChoice"><option value="Có">Có, tôi sẽ đến chung vui</option><option value="Không">Rất tiếc, tôi chưa thể tham dự</option></select>
       </label>
       <label>Số khách<select id="guestCount"><option>1</option><option>2</option><option>3</option><option>4</option></select></label>
       <button class="dialog-submit" value="default" type="submit">GỬI XÁC NHẬN</button>
