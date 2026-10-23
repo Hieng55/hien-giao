@@ -38,4 +38,10 @@
 @media(max-width:700px){.family-right{width:112px;right:-48px;top:296px}.family-left{width:132px;left:-94px}.navy-card>.full-name{padding-inline:8px}}
 
 /* Emphasize the key ceremonial details without making the invitation feel heavy */
-.ceremony-heading strong,.party-intro strong,.times span,.date-grid b{font-family:Jost,Arial,sans-serif;font-weight:600;font-variation-settings:"wght" 600}.ceremony-heading strong,.party-intro strong{letter-spacing:.25px}.times span{color:#fff7e7;letter-spacing:.45px}.date-grid b{color:#fffaf0}
+.ceremony-heading strong,.party-intro strong,.times span,.date-grid b{font-family:Jost,Arial,sans-serif;font-weight:600}.ceremony-heading strong,.party-intro strong{letter-spacing:.25px}.times span{color:#fff7e7;letter-spacing:.45px}.date-grid b{color:#fffaf0}
+
+/* Vietnamese-first body typography */
+@font-face{font-family:"Be Vietnam Pro";src:url('assets/BeVietnamPro-Regular.ttf') format('truetype');font-style:normal;font-weight:400;font-display:swap}
+@font-face{font-family:"Be Vietnam Pro";src:url('assets/BeVietnamPro-Medium.ttf') format('truetype');font-style:normal;font-weight:500;font-display:swap}
+@font-face{font-family:"Be Vietnam Pro";src:url('assets/BeVietnamPro-SemiBold.ttf') format('truetype');font-style:normal;font-weight:600;font-display:swap}
+body,.cover-date,.eyebrow,.navy-card,.venue,.guestbook,.pill-button,.open-button,.guestbook input,.guestbook textarea,.ceremony-heading strong,.party-intro strong,.times span,.date-grid b{font-family:"Be Vietnam Pro",Arial,sans-serif}
