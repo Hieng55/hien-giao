@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#002a59">
+  <meta name="description" content="Thiệp cưới Ngọc Giao và Phương Hiển — 22 tháng 11, 2026.">
+  <title>Ngọc Giao &amp; Phương Hiển</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="locked">
+  <div class="opening-screen" id="openingScreen" aria-label="Mở thiệp cưới">
+    <span class="drift drift-1">✣</span><span class="drift drift-2">✣</span>
+    <span class="drift drift-3">✣</span><span class="drift drift-4">✣</span>
+    <div class="invitation-card">
+      <img class="cover-flower cover-flower-left" src="assets/flower3-decoration.webp" alt="">
+      <img class="cover-flower cover-flower-right" src="assets/flower4-decoration.webp" alt="">
+      <span class="heart-seal" aria-hidden="true">♥</span>
+      <h1><span>Ngọc Giao</span><small>&amp;</small><span>Phương Hiển</span></h1>
+      <div class="tiny-divider"><i></i><b>❧</b><i></i></div>
+      <p class="cover-date">22 tháng 11, 2026</p>
+      <p class="dear">Thân Mời</p>
+      <button class="open-button" id="openInvitation" type="button">Mở thiệp</button>
+    </div>
+  </div>
+
+  <main class="page-shell" id="mainContent" aria-hidden="true">
+    <header class="hero">
+      <p class="eyebrow">SAVE THE DATE</p>
+      <img class="castle castle-top" src="assets/castle-background.webp" alt="">
+      <div class="photo-envelope" aria-label="Ảnh cưới của Ngọc Giao và Phương Hiển">
+        <img class="photo photo-one" src="assets/bride.jpg" alt="Ngọc Giao và Phương Hiển">
+        <img class="photo photo-two" src="assets/groom.jpg" alt="Ngọc Giao và Phương Hiển">
+        <img class="envelope" src="assets/envelope-cover.webp" alt="">
+        <img class="hero-flowers hero-flowers-left" src="assets/flower4-decoration.webp" alt="">
+        <img class="hero-flowers hero-flowers-right" src="assets/flower3-decoration.webp" alt="">
+      </div>
+      <h2 class="couple-title">NGỌC GIAO<br>PHƯƠNG HIỂN</h2>
+    </header>
+
+    <section class="navy-card family-card reveal">
+      <img class="decor family-left" src="assets/flower2-decoration.webp" alt="">
+      <img class="decor family-right" src="assets/flower3-decoration.webp" alt="">
+      <h3>THÔNG TIN LỄ CƯỚI</h3>
+      <div class="families">
+        <div><span>Ông Bà</span><strong>Huỳnh Chính<br>Nguyễn Thị Mến</strong><small>X. Bà Điểm, TP. HCM</small></div>
+        <i></i>
+        <div><span>Ông Bà</span><strong>Lượng Mừng<br>Mai Thị Hoàng Kim</strong><small>TX. Ninh Hoà, T. Khánh Hoà</small></div>
+      </div>
+      <p class="full-name">Huỳnh Thị Ngọc Giao</p>
+      <span class="role">TRƯỞNG NỮ</span>
+      <span class="ampersand">&amp;</span>
+      <p class="full-name">Lượng Phương Hiển</p>
+      <span class="role">QUÝ NAM</span>
+      <p class="ceremony-heading">LỄ VU QUY ĐƯỢC CỬ HÀNH TẠI<br>TƯ GIA</p>
+      <div class="date-grid">
+        <div><span>VÀO LÚC 09:00</span><strong>22</strong><small>(TỨC NGÀY 14 THÁNG 10 NĂM BÍNH NGỌ)</small></div>
+        <div><span>CHỦ NHẬT</span><b>THÁNG 11<br>2026</b></div>
+      </div>
+    </section>
+
+    <section class="navy-card party-card reveal">
+      <img class="decor party-left" src="assets/flower5-decoration.webp" alt="">
+      <img class="decor party-right" src="assets/flower6-decoration.webp" alt="">
+      <h3>THÔNG TIN TIỆC CƯỚI</h3>
+      <p class="party-intro">TIỆC CƯỚI SẼ DIỄN RA VÀO LÚC:</p>
+      <div class="date-grid party-date">
+        <div><span>18:00</span><strong>22</strong><small>(TỨC NGÀY 14 THÁNG 10 NĂM BÍNH NGỌ)</small></div>
+        <div><span>CHỦ NHẬT</span><b>THÁNG 11<br>2026</b></div>
+      </div>
+      <div class="times"><div><span>ĐÓN KHÁCH</span><strong>18:00</strong></div><div><span>KHAI TIỆC</span><strong>19:00</strong></div></div>
+      <p class="count-label">Cùng đếm ngược</p>
+      <p class="countdown" id="countdown">Đang tính thời gian...</p>
+      <div class="calendar">
+        <p>Tháng 11 / 2026</p>
+        <div class="weekdays"><span>T2</span><span>T3</span><span>T4</span><span>T5</span><span>T6</span><span>T7</span><span>CN</span></div>
+        <div class="days" id="calendarDays"></div>
+      </div>
+      <button class="text-button" id="addCalendar" type="button">Thêm vào lịch</button>
+    </section>
+
+    <button class="pill-button reveal" id="rsvpButton" type="button">XÁC NHẬN THAM DỰ</button>
+
+    <section class="venue reveal">
+      <h3>TIỆC CƯỚI SẼ TỔ CHỨC TẠI NHÀ HÀNG LÊ ĐÔNG PHƯƠNG</h3>
+      <p>491 Nguyễn Văn Quá, P. Đông Hưng Thuận, TP. HCM</p>
+      <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=491+Nguyễn+Văn+Quá,+Đông+Hưng+Thuận,+TP+HCM" target="_blank" rel="noopener">➤&nbsp; Chỉ đường</a>
+    </section>
+
+    <section class="guestbook reveal">
+      <img class="guest-flower" src="assets/flower2-decoration.webp" alt="">
+      <h3>SỔ LƯU BÚT</h3>
+      <form id="wishForm">
+        <label><span class="sr-only">Tên của bạn</span><input id="guestName" required maxlength="60" placeholder="Nhập tên*"></label>
+        <label><span class="sr-only">Lời chúc</span><textarea id="guestWish" required maxlength="300" placeholder="Nhập lời chúc*"></textarea></label>
+        <div class="form-actions"><button class="magic" type="button" id="magicWish" aria-label="Gợi ý lời chúc">🪄</button><button class="submit-wish" type="submit">GỬI LỜI CHÚC</button></div>
+      </form>
+      <p class="empty-wishes" id="emptyWishes">Chưa có lời chúc nào. Hãy là người đầu tiên!</p>
+      <div class="wishes" id="wishes"></div>
+    </section>
+
+    <p class="privacy">Sự hiện diện của quý khách là niềm vinh hạnh của gia đình chúng tôi!</p>
+    <footer>© Ngọc Giao &amp; Phương Hiển</footer>
+  </main>
+
+  <dialog id="rsvpDialog">
+    <form method="dialog" id="rsvpForm">
+      <button class="dialog-close" value="cancel" aria-label="Đóng">×</button>
+      <p class="dialog-kicker">22 · 11 · 2026</p>
+      <h2>Xác nhận tham dự</h2>
+      <label>Họ và tên<input id="rsvpName" required placeholder="Tên của bạn"></label>
+      <label>Bạn sẽ tham dự?
+        <select id="rsvpChoice"><option value="Có">Có, tôi sẽ đến</option><option value="Không">Rất tiếc, tôi không thể đến</option></select>
+      </label>
+      <label>Số khách<select id="guestCount"><option>1</option><option>2</option><option>3</option><option>4</option></select></label>
+      <button class="dialog-submit" value="default" type="submit">GỬI XÁC NHẬN</button>
+    </form>
+  </dialog>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>
