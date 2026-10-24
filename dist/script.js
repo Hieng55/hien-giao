@@ -58,15 +58,41 @@ document.querySelector('#addCalendar').addEventListener('click', () => {
 const dialog = document.querySelector('#rsvpDialog');
 document.querySelector('#rsvpButton').addEventListener('click', () => dialog.showModal());
 document.querySelector('.dialog-close').addEventListener('click', () => dialog.close());
-document.querySelector('#rsvpForm').addEventListener('submit', event => {
+document.querySelector('#rsvpForm').addEventListener('submit', async event => {
   event.preventDefault();
   const name = document.querySelector('#rsvpName').value.trim();
   if (!name) return;
-  const response = { name, choice: document.querySelector('#rsvpChoice').value, guests: document.querySelector('#guestCount').value };
-  localStorage.setItem('wedding-rsvp', JSON.stringify(response));
-  dialog.close();
-  event.target.reset();
-  showToast(`Cảm ơn ${name}! Hẹn gặp bạn trong ngày vui của chúng mình.`);
+  const submitButton = event.target.querySelector('.dialog-submit');
+  const submitLabel = submitButton.querySelector('span');
+  const response = {
+    name,
+    choice: document.querySelector('#rsvpChoice').value,
+    guests: document.querySelector('#guestCount').value,
+    website: document.querySelector('#rsvpWebsite').value
+  };
+
+  submitButton.disabled = true;
+  submitLabel.textContent = 'ĐANG GỬI...';
+
+  try {
+    const request = await fetch('/api/rsvp', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(response)
+    });
+    const result = await request.json().catch(() => ({}));
+    if (!request.ok) throw new Error(result.error || 'Không thể gửi xác nhận');
+
+    localStorage.setItem('wedding-rsvp', JSON.stringify(response));
+    dialog.close();
+    event.target.reset();
+    showToast(`Cảm ơn ${name}! Xác nhận đã được gửi đến cô dâu chú rể.`);
+  } catch (error) {
+    showToast('Chưa gửi được xác nhận. Vui lòng thử lại sau.');
+  } finally {
+    submitButton.disabled = false;
+    submitLabel.textContent = 'GỬI XÁC NHẬN';
+  }
 });
 
 const galleryCarousel = document.querySelector('#galleryCarousel');

@@ -265,6 +265,7 @@ button,a,input,select{touch-action:manipulation}
 .venue-closing .privacy{color:rgba(255,255,255,.9)}
 .venue-closing footer{color:rgba(255,255,255,.72);text-shadow:none}
 .pill-button,.map-link{border:1px solid rgba(233,204,149,.4)}
+.dialog-submit:disabled{opacity:.68;cursor:wait;transform:none;box-shadow:none}
 .venue .map-link{width:max-content;max-width:100%;padding-inline:18px;background:#e9cc95;color:#003163;border-color:#e9cc95;box-shadow:0 8px 20px rgba(0,0,0,.24)}
 .venue .map-link:hover{background:#f3dfb5;color:#003163;box-shadow:0 11px 25px rgba(0,0,0,.3)}
 

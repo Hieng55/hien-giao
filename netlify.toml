@@ -1,6 +1,9 @@
 [build]
   publish = "dist"
 
+[functions]
+  directory = "netlify/functions"
+
 [[headers]]
   for = "/index.html"
   [headers.values]
