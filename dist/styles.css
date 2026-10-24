@@ -227,6 +227,9 @@ button,a,input,select{touch-action:manipulation}
 .party-date-card .party-times{gap:52px;margin:17px 0 0;padding-top:16px;border-top:1px solid rgba(233,204,149,.24)}
 .party-date-card .party-times span{color:#fff}
 .party-date-card .party-times strong{color:#e9cc95;font-size:15px}
+.party-date-card .party-venue{display:flex;flex-direction:column;align-items:center;gap:0;margin:17px 0 2px;padding-top:13px;border-top:1px solid rgba(233,204,149,.24);line-height:1.35}
+.party-date-card .party-venue-logo{display:block;width:min(210px,78%);height:auto;margin:0;filter:brightness(0) saturate(100%) invert(86%) sepia(25%) saturate(692%) hue-rotate(354deg) brightness(96%) contrast(90%) drop-shadow(0 5px 8px rgba(0,0,0,.2))}
+.party-date-card .party-venue small{margin-top:15px;color:rgba(255,255,255,.86);font-size:clamp(8px,2.55vw,10.5px);white-space:nowrap}
 .party-date-card{margin-bottom:27px}
 
 @media(max-width:380px){
