@@ -221,7 +221,7 @@ button,a,input,select{touch-action:manipulation}
 .ceremony-date-main>i{width:1px;height:58px;background:rgba(233,204,149,.68)}
 .ceremony-date-main>div{display:flex;flex-direction:column;gap:7px;color:#fff;text-align:left;padding-left:18px}
 .ceremony-date-main span,.ceremony-date-main b{font-size:13px;font-style:normal;font-weight:600}
-.ceremony-date-main span{font-size:14px}
+.ceremony-date-main span{font-size:18px}
 .ceremony-date-main b{color:#e9cc95}
 .ceremony-date>small{display:block;color:rgba(255,255,255,.86);font-size:11px;line-height:1.5}
 .party-date-card .party-times{gap:52px;margin:17px 0 0;padding-top:16px;border-top:1px solid rgba(233,204,149,.24)}
