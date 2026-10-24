@@ -336,7 +336,7 @@ button,a,input,select{touch-action:manipulation}
 .gallery-controls>span{color:#e9cc95;font:500 12px/1 "Be Vietnam Pro",Arial,sans-serif;letter-spacing:1.6px;text-align:center}
 .gallery-close,.gallery-nav{z-index:2;display:grid;place-items:center;padding:0;border:1px solid rgba(233,204,149,.58);border-radius:50%;background:rgba(0,49,99,.66);color:#fff;cursor:pointer;transition:background-color .2s ease,color .2s ease,transform .2s ease}
 .gallery-close{position:absolute;top:max(16px,env(safe-area-inset-top));right:max(16px,env(safe-area-inset-right));width:44px;height:44px;font:300 30px/1 Arial,sans-serif}
-.gallery-nav{width:44px;height:44px;font:300 34px/1 Georgia,serif}
+.gallery-nav{position:relative;width:44px;height:44px;pointer-events:auto;touch-action:manipulation;-webkit-tap-highlight-color:transparent;font:300 34px/1 Georgia,serif}
 .gallery-close:hover,.gallery-nav:hover{background:#e9cc95;color:#003163}
 .gallery-close:active,.gallery-nav:active{transform:scale(.93)}
 .gallery-close:focus-visible,.gallery-nav:focus-visible{outline:3px solid rgba(233,204,149,.35);outline-offset:3px}
@@ -364,8 +364,8 @@ button,a,input,select{touch-action:manipulation}
   .gallery-lightbox{padding-inline:11px}
   .gallery-lightbox-title{margin-bottom:14px;font-size:10px;letter-spacing:2px;text-align:center}
   .gallery-lightbox figure img{max-width:100%;max-height:100%}
-  .gallery-controls{grid-template-columns:42px 58px 42px;margin-top:14px;padding:5px}
-  .gallery-nav{width:42px;height:42px;font-size:32px}
+  .gallery-controls{position:relative;z-index:5;grid-template-columns:48px 58px 48px;margin-top:14px;padding:5px}
+  .gallery-nav{width:48px;height:48px;font-size:34px}
 }
 
 /* Reveal each content block as it reaches the viewport */

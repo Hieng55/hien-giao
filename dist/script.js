@@ -227,13 +227,21 @@ function showGalleryImage(index) {
   const requestId = ++galleryImageRequest;
   galleryLightboxImage.alt = thumbnail.alt;
   galleryCounter.textContent = `${activeGalleryIndex + 1} / ${galleryItems.length}`;
+  const thumbnailSource = thumbnail.currentSrc || thumbnail.src;
+
+  // The 1200px gallery image is already cached and is sharp enough for phones.
+  // Switching to it directly keeps touch navigation instant on mobile Safari.
+  if (matchMedia('(max-width: 700px), (pointer: coarse)').matches) {
+    galleryLightboxImage.src = thumbnailSource;
+    return;
+  }
+
   const highResolutionImage = new Image();
   const isChangingImage = galleryLightbox.open;
 
-  if (!isChangingImage) galleryLightboxImage.src = thumbnail.currentSrc || thumbnail.src;
+  if (!isChangingImage) galleryLightboxImage.src = thumbnailSource;
 
-  highResolutionImage.onload = async () => {
-    try { await highResolutionImage.decode(); } catch {}
+  highResolutionImage.onload = () => {
     if (requestId !== galleryImageRequest) return;
     galleryLightboxImage.src = fullSource;
   };
@@ -260,8 +268,26 @@ function closeGalleryLightbox() {
 }
 
 document.querySelector('#galleryClose').addEventListener('click', closeGalleryLightbox);
-document.querySelector('#galleryPrev').addEventListener('click', () => showGalleryImage(activeGalleryIndex - 1));
-document.querySelector('#galleryNext').addEventListener('click', () => showGalleryImage(activeGalleryIndex + 1));
+
+function bindGalleryNavigation(button, direction) {
+  let touchHandled = false;
+
+  button.addEventListener('pointerup', event => {
+    if (event.pointerType !== 'touch' && event.pointerType !== 'pen') return;
+    event.preventDefault();
+    touchHandled = true;
+    showGalleryImage(activeGalleryIndex + direction);
+    setTimeout(() => { touchHandled = false; }, 450);
+  });
+
+  button.addEventListener('click', () => {
+    if (touchHandled) return;
+    showGalleryImage(activeGalleryIndex + direction);
+  });
+}
+
+bindGalleryNavigation(document.querySelector('#galleryPrev'), -1);
+bindGalleryNavigation(document.querySelector('#galleryNext'), 1);
 galleryLightbox.addEventListener('click', event => {
   if (event.target === galleryLightbox) closeGalleryLightbox();
 });
