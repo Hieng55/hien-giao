@@ -13,6 +13,33 @@ function showToast(message) {
   showToast.timer = setTimeout(() => toast.classList.remove('show'), 2800);
 }
 
+function showRsvpSuccess(name, attending) {
+  const message = attending
+    ? `Cảm ơn ${name} đã xác nhận tham dự. Sự hiện diện của bạn sẽ góp thêm niềm vui và làm ngày chung đôi của chúng mình thêm trọn vẹn.`
+    : `Cảm ơn ${name} đã gửi lời hồi đáp. Chúng mình rất trân quý tình cảm của bạn và mong sẽ sớm có dịp gặp lại.`;
+
+  if (typeof Swal === 'undefined') {
+    showToast('Chúng mình đã nhận được lời hồi đáp của bạn. Xin chân thành cảm ơn!');
+    return;
+  }
+
+  Swal.fire({
+    icon: 'success',
+    title: 'CẢM ƠN BẠN ĐÃ HỒI ĐÁP',
+    text: message,
+    confirmButtonText: 'KHÉP LẠI',
+    buttonsStyling: false,
+    heightAuto: false,
+    backdrop: 'rgba(0, 25, 58, .76)',
+    customClass: {
+      popup: 'wedding-swal-popup',
+      title: 'wedding-swal-title',
+      htmlContainer: 'wedding-swal-copy',
+      confirmButton: 'wedding-swal-confirm'
+    }
+  });
+}
+
 document.querySelector('#openInvitation').addEventListener('click', () => {
   backgroundMusic.volume = 0.55;
   backgroundMusic.play().catch(() => {});
@@ -86,7 +113,7 @@ document.querySelector('#rsvpForm').addEventListener('submit', async event => {
     localStorage.setItem('wedding-rsvp', JSON.stringify(response));
     dialog.close();
     event.target.reset();
-    showToast(`Cảm ơn ${name}! Xác nhận đã được gửi đến cô dâu chú rể.`);
+    showRsvpSuccess(name, response.choice === 'Có');
   } catch (error) {
     showToast(error.message || 'Chưa gửi được xác nhận. Vui lòng thử lại sau.');
   } finally {
