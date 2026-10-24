@@ -88,7 +88,7 @@ document.querySelector('#rsvpForm').addEventListener('submit', async event => {
     event.target.reset();
     showToast(`Cảm ơn ${name}! Xác nhận đã được gửi đến cô dâu chú rể.`);
   } catch (error) {
-    showToast('Chưa gửi được xác nhận. Vui lòng thử lại sau.');
+    showToast(error.message || 'Chưa gửi được xác nhận. Vui lòng thử lại sau.');
   } finally {
     submitButton.disabled = false;
     submitLabel.textContent = 'GỬI XÁC NHẬN';

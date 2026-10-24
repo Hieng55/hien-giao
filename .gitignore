@@ -1,5 +1,5 @@
 # High-resolution source photos are kept locally only.
-# Netlify uses the optimized web/ and large/ variants.
+# The deployed site uses the optimized web/ and large/ variants.
 dist/assets/ảnh cưới/*.jpg
 
 # Local/editor files
