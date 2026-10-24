@@ -229,10 +229,19 @@ function showGalleryImage(index) {
   galleryCounter.textContent = `${activeGalleryIndex + 1} / ${galleryItems.length}`;
   const thumbnailSource = thumbnail.currentSrc || thumbnail.src;
 
-  // The 1200px gallery image is already cached and is sharp enough for phones.
-  // Switching to it directly keeps touch navigation instant on mobile Safari.
+  // Show the small cached thumbnail instantly on phones, then upgrade to the
+  // 800px version without downloading the multi-megabyte original.
   if (matchMedia('(max-width: 700px), (pointer: coarse)').matches) {
     galleryLightboxImage.src = thumbnailSource;
+    const mediumSource = thumbnail.src;
+    if (thumbnailSource !== mediumSource) {
+      const mediumResolutionImage = new Image();
+      mediumResolutionImage.onload = () => {
+        if (requestId !== galleryImageRequest) return;
+        galleryLightboxImage.src = mediumSource;
+      };
+      mediumResolutionImage.src = mediumSource;
+    }
     return;
   }
 
