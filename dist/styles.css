@@ -133,7 +133,7 @@ button,a,input,select{touch-action:manipulation}
 .family-card .role{display:inline-flex;align-items:center;min-height:25px;padding:4px 13px;border:1px solid rgba(213,180,116,.38);border-radius:999px;color:#e9cc95;font-weight:600;letter-spacing:2.2px}
 .family-card .ampersand{width:58px;height:58px;display:grid;place-items:center;margin:17px auto 12px;border:1px solid rgba(213,180,116,.42);border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.09),transparent 70%);color:#f3dba9;font-size:39px;line-height:1}
 .ceremony-emblem{position:relative;z-index:3;display:block;width:104px;height:auto;margin:24px auto 4px;filter:drop-shadow(0 7px 12px rgba(0,0,0,.18));pointer-events:none}
-.family-card .ceremony-heading{margin:8px 0 22px;padding-top:14px;border-top:1px solid rgba(213,180,116,.28);line-height:1.7}
+.family-card .ceremony-heading{margin:8px 0 22px;padding-top:14px;border-top:1px solid rgba(213,180,116,.28);line-height:1.7;white-space:nowrap}
 .family-card .date-grid{width:min(350px,100%);padding:17px 10px;border:1px solid rgba(255,255,255,.12);border-radius:10px;background:rgba(0,13,39,.18)}
 .family-card .date-grid>div{display:flex;min-height:112px;flex-direction:column;justify-content:center}
 .family-card .date-grid strong{margin:4px 0;color:#f6ddb0;font-size:48px;line-height:1}
