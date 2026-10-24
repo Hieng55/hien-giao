@@ -82,9 +82,6 @@ document.querySelector('#addCalendar').addEventListener('click', () => {
   showToast('Ngày vui đã được thêm vào lịch của bạn');
 });
 
-const dialog = document.querySelector('#rsvpDialog');
-document.querySelector('#rsvpButton').addEventListener('click', () => dialog.showModal());
-document.querySelector('.dialog-close').addEventListener('click', () => dialog.close());
 document.querySelector('#rsvpForm').addEventListener('submit', async event => {
   event.preventDefault();
   const name = document.querySelector('#rsvpName').value.trim();
@@ -93,7 +90,7 @@ document.querySelector('#rsvpForm').addEventListener('submit', async event => {
   const submitLabel = submitButton.querySelector('span');
   const response = {
     name,
-    choice: document.querySelector('#rsvpChoice').value,
+    choice: document.querySelector('[name="rsvpChoice"]:checked').value,
     guests: document.querySelector('#guestCount').value,
     website: document.querySelector('#rsvpWebsite').value
   };
@@ -111,7 +108,6 @@ document.querySelector('#rsvpForm').addEventListener('submit', async event => {
     if (!request.ok) throw new Error(result.error || 'Không thể gửi xác nhận');
 
     localStorage.setItem('wedding-rsvp', JSON.stringify(response));
-    dialog.close();
     event.target.reset();
     showRsvpSuccess(name, response.choice === 'Có');
   } catch (error) {
@@ -137,7 +133,13 @@ let carouselTimer;
 let carouselVisible = false;
 let dragPointer = null;
 let dragStartX = 0;
+let dragStartY = 0;
 let dragDistance = 0;
+let dragAxis = null;
+let dragLastX = 0;
+let dragLastTime = 0;
+let dragVelocity = 0;
+let dragFrame = 0;
 let suppressGalleryClick = false;
 
 function createGalleryClone(item) {
@@ -162,11 +164,18 @@ function updateGalleryDots() {
   galleryDots.forEach((dot, index) => dot.classList.toggle('is-active', index === current));
 }
 
-function positionGalleryTrack(animate = true, offset = 0) {
+function gallerySlideMetrics() {
   const gap = Number.parseFloat(getComputedStyle(galleryTrack).columnGap) || 0;
   const slideWidth = galleryTrack.querySelector('.gallery-item').getBoundingClientRect().width;
-  galleryTrack.style.transition = animate ? 'transform .65s cubic-bezier(.22,.72,.24,1)' : 'none';
-  galleryTrack.style.transform = `translate3d(${-(carouselIndex * (slideWidth + gap)) + offset}px,0,0)`;
+  return { gap, slideWidth, slideSpan: slideWidth + gap };
+}
+
+function positionGalleryTrack(animate = true, offset = 0, duration = 480) {
+  const { slideSpan } = gallerySlideMetrics();
+  galleryTrack.style.transition = animate
+    ? `transform ${duration}ms cubic-bezier(.16,.84,.26,1)`
+    : 'none';
+  galleryTrack.style.transform = `translate3d(${-(carouselIndex * slideSpan) + offset}px,0,0)`;
   updateGalleryDots();
 }
 
@@ -203,7 +212,12 @@ galleryCarousel.addEventListener('pointerdown', event => {
   stopGalleryAutoplay();
   dragPointer = event.pointerId;
   dragStartX = event.clientX;
+  dragStartY = event.clientY;
   dragDistance = 0;
+  dragAxis = null;
+  dragLastX = event.clientX;
+  dragLastTime = event.timeStamp;
+  dragVelocity = 0;
   galleryCarousel.classList.add('is-dragging');
   galleryCarousel.setPointerCapture(event.pointerId);
   positionGalleryTrack(false);
@@ -211,20 +225,49 @@ galleryCarousel.addEventListener('pointerdown', event => {
 
 galleryCarousel.addEventListener('pointermove', event => {
   if (event.pointerId !== dragPointer) return;
-  dragDistance = event.clientX - dragStartX;
-  positionGalleryTrack(false, dragDistance);
+  const distanceX = event.clientX - dragStartX;
+  const distanceY = event.clientY - dragStartY;
+
+  if (!dragAxis && Math.hypot(distanceX, distanceY) > 6) {
+    dragAxis = Math.abs(distanceX) > Math.abs(distanceY) * 1.15 ? 'x' : 'y';
+  }
+  if (dragAxis !== 'x') return;
+
+  const elapsed = Math.max(1, event.timeStamp - dragLastTime);
+  const instantVelocity = (event.clientX - dragLastX) / elapsed;
+  dragVelocity = dragVelocity * .72 + instantVelocity * .28;
+  dragLastX = event.clientX;
+  dragLastTime = event.timeStamp;
+  dragDistance = distanceX;
+
+  cancelAnimationFrame(dragFrame);
+  dragFrame = requestAnimationFrame(() => positionGalleryTrack(false, dragDistance));
 });
 
 function finishGalleryDrag(event) {
   if (event.pointerId !== dragPointer) return;
-  const threshold = Math.min(70, galleryCarousel.clientWidth * .12);
-  if (dragDistance < -threshold) carouselIndex += 1;
-  if (dragDistance > threshold) carouselIndex -= 1;
+  cancelAnimationFrame(dragFrame);
+  const { slideSpan } = gallerySlideMetrics();
+  const isHorizontalSwipe = dragAxis === 'x' && event.type !== 'pointercancel';
+  const projectedDistance = isHorizontalSwipe ? dragDistance + dragVelocity * 180 : 0;
+  const threshold = Math.min(48, slideSpan * .18);
+  let slideChange = 0;
+
+  if (Math.abs(projectedDistance) > threshold) {
+    slideChange = Math.round(-projectedDistance / slideSpan) || -Math.sign(projectedDistance);
+    slideChange = Math.max(-2, Math.min(2, slideChange));
+  }
+
+  carouselIndex += slideChange;
   suppressGalleryClick = Math.abs(dragDistance) > 6;
+  const remainingDistance = Math.abs(slideChange * slideSpan + dragDistance);
+  const releaseDuration = Math.max(280, Math.min(520, 260 + remainingDistance * .55));
   dragPointer = null;
   dragDistance = 0;
+  dragAxis = null;
+  dragVelocity = 0;
   galleryCarousel.classList.remove('is-dragging');
-  positionGalleryTrack();
+  positionGalleryTrack(true, 0, releaseDuration);
   startGalleryAutoplay();
   setTimeout(() => { suppressGalleryClick = false; }, 0);
 }

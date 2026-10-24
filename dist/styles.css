@@ -287,10 +287,32 @@ button,a,input,select{touch-action:manipulation}
 .venue-closing footer{color:rgba(255,255,255,.72);text-shadow:none}
 .pill-button,.map-link{border:1px solid rgba(233,204,149,.4)}
 .dialog-submit:disabled{opacity:.68;cursor:wait;transform:none;box-shadow:none}
+.rsvp-section{width:min(560px,calc(100% - 24px));margin:0 auto 48px;padding:42px;border:1px solid rgba(197,156,83,.38);border-radius:7px;background:rgba(255,255,255,.88);box-shadow:0 14px 34px rgba(0,28,64,.14);color:#0c3b67}
+.rsvp-section form{width:100%}
+.rsvp-section h2{margin:5px 0 25px;color:#0c3b67;font:400 34px/1.2 Lora,Georgia,serif;text-align:center}
+.rsvp-section .dialog-kicker{text-align:center;letter-spacing:3px}
+.rsvp-section label{display:block;margin:14px 0;font-size:12px;font-weight:500}
+.rsvp-section input,.rsvp-section select{display:block;width:100%;min-height:46px;margin-top:7px;padding:11px 13px;border:1px solid #8fa2b5;border-radius:6px;background:#fff;color:#173c61;outline:none;transition:border-color .2s ease,box-shadow .2s ease}
+.rsvp-section input:focus,.rsvp-section select:focus{border-color:#c49a50;box-shadow:0 0 0 3px rgba(196,154,80,.14)}
+.attendance-fieldset{min-width:0;margin:14px 0;padding:0;border:0}
+.attendance-fieldset legend{margin-bottom:8px;padding:0;font-size:12px;font-weight:500}
+.attendance-options{display:grid;gap:9px}
+.rsvp-section .attendance-choice{display:flex;min-height:48px;align-items:center;gap:11px;margin:0;padding:10px 13px;border:1px solid #8fa2b5;border-radius:7px;background:#fff;color:#173c61;cursor:pointer;transition:border-color .2s ease,background-color .2s ease,box-shadow .2s ease,transform .2s ease}
+.rsvp-section .attendance-choice:hover{border-color:#557796;background:#f8fbfd}
+.rsvp-section .attendance-choice:has(input:checked){border-color:#003163;background:#f1f6fa;box-shadow:0 0 0 2px rgba(0,49,99,.1)}
+.attendance-choice input{position:absolute;width:1px;height:1px;min-height:0;margin:-1px;padding:0;overflow:hidden;border:0;clip:rect(0,0,0,0);white-space:nowrap}
+.attendance-check{display:grid;flex:0 0 23px;width:23px;height:23px;place-items:center;border:1.5px solid #8fa2b5;border-radius:50%;color:transparent;font-size:15px;font-weight:700;transition:border-color .2s ease,background-color .2s ease,color .2s ease,transform .2s ease}
+.attendance-choice input:checked+.attendance-check{border-color:#003163;background:#003163;color:#fff;transform:scale(1.04)}
+.attendance-choice input:focus-visible+.attendance-check{outline:3px solid rgba(196,154,80,.3);outline-offset:3px}
+.rsvp-section .dialog-submit{width:100%;min-height:48px;margin-top:12px;padding:12px;border:0;border-radius:999px;background:#002b59;color:#fff;font-size:12px;font-weight:700;cursor:pointer}
 .venue .map-link{width:max-content;max-width:100%;padding-inline:18px;background:#e9cc95;color:#003163;border-color:#e9cc95;box-shadow:0 8px 20px rgba(0,0,0,.24)}
 .venue .map-link:hover{background:#f3dfb5;color:#003163;box-shadow:0 11px 25px rgba(0,0,0,.3)}
 
 @media(max-width:700px){
+  .rsvp-section{margin-bottom:40px;padding:36px 22px}
+  .rsvp-section h2{font-size:clamp(28px,9vw,34px);margin-bottom:20px}
+  .rsvp-section .dialog-intro{margin-bottom:18px}
+  .rsvp-section input,.rsvp-section select{font-size:16px}
   .venue{padding:38px 18px 0}
   .venue .venue-title{font-size:20px;margin-bottom:24px}
   .venue .venue-heading{font-size:14px}
@@ -333,9 +355,9 @@ button,a,input,select{touch-action:manipulation}
 .gallery-section{position:relative;z-index:3;width:min(560px,calc(100% - 24px));margin:0 auto 64px;padding:48px 42px;overflow:hidden;border:1px solid rgba(233,204,149,.3);border-radius:7px;background:radial-gradient(circle at 50% 15%,rgba(46,86,137,.3),transparent 38%),linear-gradient(155deg,#173d73 0%,#0b2d61 48%,#071f49 100%);box-shadow:0 14px 34px rgba(0,28,64,.24),inset 0 0 45px rgba(0,13,40,.16);color:#fff;text-align:center}
 .gallery-section h3{margin:0 0 12px;color:#fff;font:400 clamp(21px,4vw,28px)/1.3 Lora,Georgia,serif;letter-spacing:1px}
 .gallery-section>.ornamental-divider{width:170px;margin:0 auto 25px}
-.gallery-carousel{width:100%;overflow:hidden;cursor:grab;touch-action:pan-y;user-select:none}
+.gallery-carousel{width:100%;overflow:hidden;cursor:grab;touch-action:pan-y;overscroll-behavior-x:contain;user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent}
 .gallery-carousel.is-dragging{cursor:grabbing}
-.wedding-gallery{--gallery-gap:10px;display:flex;width:100%;gap:var(--gallery-gap);will-change:transform}
+.wedding-gallery{--gallery-gap:10px;display:flex;width:100%;gap:var(--gallery-gap);will-change:transform;transform:translateZ(0);backface-visibility:hidden}
 .gallery-item{position:relative;display:block;flex:0 0 calc((100% - var(--gallery-gap))/2);aspect-ratio:2/3;padding:0;overflow:hidden;border:4px solid #fff;border-radius:0;background:#d9d2c5;box-shadow:0 9px 22px rgba(0,13,39,.32);cursor:zoom-in}
 .gallery-item::after{content:"+";position:absolute;right:10px;bottom:10px;display:grid;width:31px;height:31px;place-items:center;border:1px solid rgba(255,255,255,.72);border-radius:50%;background:rgba(0,49,99,.74);color:#fff;font:300 22px/1 Arial,sans-serif;opacity:0;transform:scale(.8);transition:opacity .25s ease,transform .25s ease}
 .gallery-item img{display:block;width:100%;height:100%;object-fit:cover;pointer-events:none;transition:transform .5s ease,filter .5s ease}

@@ -94,7 +94,32 @@
       <img class="party-cake" src="assets/cake.webp" alt="" aria-hidden="true" loading="lazy" decoding="async">
     </section>
 
-    <button class="pill-button reveal" id="rsvpButton" type="button">XÁC NHẬN THAM DỰ</button>
+    <section class="rsvp-section reveal" aria-labelledby="rsvpTitle">
+      <form id="rsvpForm">
+        <p class="dialog-kicker">22 · 11 · 2026</p>
+        <h2 id="rsvpTitle">Xác nhận tham dự</h2>
+        <p class="dialog-intro">Sự hiện diện của bạn sẽ làm ngày vui của chúng mình thêm trọn vẹn.</p>
+        <label class="sr-only" aria-hidden="true">Website<input id="rsvpWebsite" name="website" tabindex="-1" autocomplete="off"></label>
+        <label>Họ và tên<input id="rsvpName" required placeholder="Tên của bạn" autocomplete="name"></label>
+        <fieldset class="attendance-fieldset">
+          <legend>Bạn có thể đến chung vui?</legend>
+          <div class="attendance-options">
+            <label class="attendance-choice">
+              <input type="radio" name="rsvpChoice" value="Có" checked>
+              <span class="attendance-check" aria-hidden="true">✓</span>
+              <span>Có, tôi sẽ đến chung vui</span>
+            </label>
+            <label class="attendance-choice">
+              <input type="radio" name="rsvpChoice" value="Không">
+              <span class="attendance-check" aria-hidden="true">✓</span>
+              <span>Rất tiếc, tôi chưa thể tham dự</span>
+            </label>
+          </div>
+        </fieldset>
+        <label>Số khách<select id="guestCount"><option>1</option><option>2</option><option>3</option><option>4</option></select></label>
+        <button class="dialog-submit" type="submit"><span>GỬI XÁC NHẬN</span></button>
+      </form>
+    </section>
 
     <section class="gallery-section reveal" aria-labelledby="galleryTitle">
       <h3 id="galleryTitle">KHOẢNH KHẮC CỦA CHÚNG MÌNH</h3>
@@ -147,21 +172,6 @@
     </section>
   </main>
 
-  <dialog id="rsvpDialog">
-    <form method="dialog" id="rsvpForm">
-      <button class="dialog-close" type="button" aria-label="Đóng">×</button>
-      <p class="dialog-kicker">22 · 11 · 2026</p>
-      <h2>Xác nhận tham dự</h2>
-      <p class="dialog-intro">Sự hiện diện của bạn sẽ làm ngày vui của chúng mình thêm trọn vẹn.</p>
-      <label class="sr-only" aria-hidden="true">Website<input id="rsvpWebsite" name="website" tabindex="-1" autocomplete="off"></label>
-      <label>Họ và tên<input id="rsvpName" required placeholder="Tên của bạn"></label>
-      <label>Bạn có thể đến chung vui?
-        <select id="rsvpChoice"><option value="Có">Có, tôi sẽ đến chung vui</option><option value="Không">Rất tiếc, tôi chưa thể tham dự</option></select>
-      </label>
-      <label>Số khách<select id="guestCount"><option>1</option><option>2</option><option>3</option><option>4</option></select></label>
-      <button class="dialog-submit" value="default" type="submit"><span>GỬI XÁC NHẬN</span></button>
-    </form>
-  </dialog>
   <dialog class="gallery-lightbox" id="galleryLightbox" aria-label="Xem ảnh cưới phóng to">
     <p class="gallery-lightbox-title">NGỌC GIAO <span aria-hidden="true">♥</span> PHƯƠNG HIỂN</p>
     <button class="gallery-close" id="galleryClose" type="button" aria-label="Đóng ảnh">×</button>
