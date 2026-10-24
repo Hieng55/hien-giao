@@ -11,19 +11,16 @@
 <body class="locked">
   <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
   <div class="opening-screen" id="openingScreen" aria-label="Mở thiệp cưới">
-    <span class="drift drift-1">✣</span><span class="drift drift-2">✣</span>
-    <span class="drift drift-3">✣</span><span class="drift drift-4">✣</span>
     <div class="invitation-card">
-      <img class="cover-flower cover-flower-left" src="assets/flower3-decoration.webp" alt="">
-      <img class="cover-flower cover-flower-right" src="assets/flower4-decoration.webp" alt="">
-      <span class="heart-seal" aria-hidden="true">♥</span>
+      <p class="opening-kicker">We're getting married!</p>
       <h1><span>Ngọc Giao</span><small>&amp;</small><span>Phương Hiển</span></h1>
-      <div class="tiny-divider"><i></i><b>❧</b><i></i></div>
-      <p class="cover-date">22 tháng 11, 2026</p>
-      <p class="dear">Trân trọng kính mời</p>
-      <button class="open-button" id="openInvitation" type="button">Mở thiệp</button>
+      <button class="open-button" id="openInvitation" type="button" aria-label="Chạm để mở thiệp cưới">
+        <img class="opening-envelope" src="assets/Midnight Bloom Wedding Invitation (2).png" alt="" width="952" height="633" fetchpriority="high" decoding="async">
+        <span>CHẠM ĐỂ MỞ</span>
+      </button>
     </div>
   </div>
+  <audio id="backgroundMusic" src="music/Nothing%20s%20Gonna%20Change%20My%20Love%20For%20You%20Music%20Travel%20Love%20ft.Bugoy%20Drilon.mp3" preload="auto" loop></audio>
 
   <main class="page-shell" id="mainContent" aria-hidden="true">
     <header class="hero">
@@ -31,8 +28,8 @@
       <img class="castle castle-top" src="assets/castle-background.webp" alt="">
       <div class="photo-envelope" aria-label="Ảnh cưới của Ngọc Giao và Phương Hiển">
         <img class="envelope-back" src="assets/envelope-background.webp" alt="">
-        <img class="photo photo-one" src="assets/bride.jpg" alt="Ngọc Giao và Phương Hiển">
-        <img class="photo photo-two" src="assets/groom.jpg" alt="Ngọc Giao và Phương Hiển">
+        <img class="photo photo-one" src="assets/bride.jpg" alt="Ngọc Giao và Phương Hiển" decoding="async">
+        <img class="photo photo-two" src="assets/groom.jpg" alt="Ngọc Giao và Phương Hiển" decoding="async">
         <img class="envelope" src="assets/envelope-cover.webp" alt="">
         <img class="hero-flowers hero-flowers-left" src="assets/flower4-decoration.webp" alt="">
         <img class="hero-flowers hero-flowers-right" src="assets/flower3-decoration.webp" alt="">
@@ -44,20 +41,25 @@
       <img class="decor family-left" src="assets/flower2-decoration.webp" alt="">
       <img class="decor family-right" src="assets/flower3-decoration.webp" alt="">
       <h3>THÔNG TIN HÔN LỄ</h3>
+      <img class="ornamental-divider" src="assets/goldenline2-decoration.webp" alt="" aria-hidden="true" loading="lazy" decoding="async">
       <div class="families">
         <div><span>Ông Bà</span><strong>Huỳnh Chính<br>Nguyễn Thị Mến</strong><small>X. Bà Điểm, TP. HCM</small></div>
         <i></i>
         <div><span>Ông Bà</span><strong>Lượng Mừng<br>Mai Thị Hoàng Kim</strong><small>TX. Ninh Hoà, T. Khánh Hoà</small></div>
       </div>
-      <p class="full-name">Huỳnh Thị Ngọc Giao</p>
-      <span class="role">TRƯỞNG NỮ</span>
-      <span class="ampersand">&amp;</span>
-      <p class="full-name">Lượng Phương Hiển</p>
-      <span class="role">QUÝ NAM</span>
+      <p class="full-name">Huỳnh Thị<br>Ngọc Giao</p>
+      <p class="couple-roles"><span>TRƯỞNG NỮ</span><b aria-hidden="true">♥</b><span>QUÝ NAM</span></p>
+      <p class="full-name">Lượng<br>Phương Hiển</p>
+      <img class="ceremony-emblem" src="assets/church.webp" alt="" aria-hidden="true" loading="lazy" decoding="async">
       <p class="ceremony-heading"><strong>LỄ VU QUY</strong> ĐƯỢC CỬ HÀNH TRỌNG THỂ<br><strong>TẠI TƯ GIA</strong></p>
-      <div class="date-grid">
-        <div><span>VÀO LÚC 09:00</span><strong>22</strong><small>(TỨC NGÀY 14 THÁNG 10 NĂM BÍNH NGỌ)</small></div>
-        <div><span>CHỦ NHẬT</span><b>THÁNG 11<br>2026</b></div>
+      <div class="ceremony-date">
+        <p class="ceremony-date-top"><span>VÀO LÚC <b>09:00</b></span><span>(CHỦ NHẬT)</span></p>
+        <div class="ceremony-date-main">
+          <strong>22</strong>
+          <i aria-hidden="true"></i>
+          <div><span>THÁNG 11</span><b>2026</b></div>
+        </div>
+        <small>(TỨC NGÀY 14 THÁNG 10 NĂM BÍNH NGỌ)</small>
       </div>
     </section>
 
@@ -65,12 +67,18 @@
       <img class="decor party-left" src="assets/flower5-decoration.webp" alt="">
       <img class="decor party-right" src="assets/flower6-decoration.webp" alt="">
       <h3>THÔNG TIN TIỆC CƯỚI</h3>
+      <img class="ornamental-divider" src="assets/goldenline3-decoration.webp" alt="" aria-hidden="true" loading="lazy" decoding="async">
       <p class="party-intro"><strong>TRÂN TRỌNG KÍNH MỜI</strong> QUÝ KHÁCH<br>ĐẾN DỰ <strong>TIỆC CƯỚI</strong> VÀO LÚC:</p>
-      <div class="date-grid party-date">
-        <div><span>18:00</span><strong>22</strong><small>(TỨC NGÀY 14 THÁNG 10 NĂM BÍNH NGỌ)</small></div>
-        <div><span>CHỦ NHẬT</span><b>THÁNG 11<br>2026</b></div>
+      <div class="ceremony-date party-date-card">
+        <p class="ceremony-date-top"><span>VÀO LÚC <b>18:00</b></span><span>(CHỦ NHẬT)</span></p>
+        <div class="ceremony-date-main">
+          <strong>22</strong>
+          <i aria-hidden="true"></i>
+          <div><span>THÁNG 11</span><b>2026</b></div>
+        </div>
+        <small>(TỨC NGÀY 14 THÁNG 10 NĂM BÍNH NGỌ)</small>
+        <div class="times party-times"><div><span>ĐÓN KHÁCH</span><strong>18:00</strong></div><div><span>KHAI TIỆC</span><strong>19:00</strong></div></div>
       </div>
-      <div class="times"><div><span>ĐÓN KHÁCH</span><strong>18:00</strong></div><div><span>KHAI TIỆC</span><strong>19:00</strong></div></div>
       <p class="count-label">Thời gian còn lại đến ngày chung đôi</p>
       <p class="countdown" id="countdown">Đang tính thời gian...</p>
       <div class="calendar">
@@ -79,27 +87,65 @@
         <div class="days" id="calendarDays"></div>
       </div>
       <button class="text-button" id="addCalendar" type="button">Thêm vào lịch</button>
+      <img class="party-cake" src="assets/cake.webp" alt="" aria-hidden="true" loading="lazy" decoding="async">
     </section>
 
     <button class="pill-button reveal" id="rsvpButton" type="button">XÁC NHẬN THAM DỰ</button>
 
+    <section class="gallery-section reveal" aria-labelledby="galleryTitle">
+      <h3 id="galleryTitle">KHOẢNH KHẮC CỦA CHÚNG MÌNH</h3>
+      <img class="ornamental-divider" src="assets/goldenline3-decoration.webp" alt="" aria-hidden="true" loading="lazy" decoding="async">
+      <div class="gallery-carousel" id="galleryCarousel" role="region" aria-label="Bộ ảnh cưới tự động">
+        <div class="wedding-gallery" id="galleryTrack">
+        <button class="gallery-item" type="button" data-full="assets/%E1%BA%A3nh%20c%C6%B0%E1%BB%9Bi/large/TRA_0119.jpg" aria-label="Phóng to ảnh cưới 1">
+          <img src="assets/%E1%BA%A3nh%20c%C6%B0%E1%BB%9Bi/web/TRA_0119.jpg" alt="Ảnh cưới Ngọc Giao và Phương Hiển 1" loading="lazy" decoding="async">
+        </button>
+        <button class="gallery-item" type="button" data-full="assets/%E1%BA%A3nh%20c%C6%B0%E1%BB%9Bi/large/TRA_0277.jpg" aria-label="Phóng to ảnh cưới 2">
+          <img src="assets/%E1%BA%A3nh%20c%C6%B0%E1%BB%9Bi/web/TRA_0277.jpg" alt="Ảnh cưới Ngọc Giao và Phương Hiển 2" loading="lazy" decoding="async">
+        </button>
+        <button class="gallery-item" type="button" data-full="assets/%E1%BA%A3nh%20c%C6%B0%E1%BB%9Bi/large/TRA_0401.jpg" aria-label="Phóng to ảnh cưới 3">
+          <img src="assets/%E1%BA%A3nh%20c%C6%B0%E1%BB%9Bi/web/TRA_0401.jpg" alt="Ảnh cưới Ngọc Giao và Phương Hiển 3" loading="lazy" decoding="async">
+        </button>
+        <button class="gallery-item" type="button" data-full="assets/%E1%BA%A3nh%20c%C6%B0%E1%BB%9Bi/large/TRA_1162.jpg" aria-label="Phóng to ảnh cưới 4">
+          <img src="assets/%E1%BA%A3nh%20c%C6%B0%E1%BB%9Bi/web/TRA_1162.jpg" alt="Ảnh cưới Ngọc Giao và Phương Hiển 4" loading="lazy" decoding="async">
+        </button>
+        <button class="gallery-item" type="button" data-full="assets/%E1%BA%A3nh%20c%C6%B0%E1%BB%9Bi/large/TRA_1473.jpg" aria-label="Phóng to ảnh cưới 5">
+          <img src="assets/%E1%BA%A3nh%20c%C6%B0%E1%BB%9Bi/web/TRA_1473.jpg" alt="Ảnh cưới Ngọc Giao và Phương Hiển 5" loading="lazy" decoding="async">
+        </button>
+        </div>
+      </div>
+      <div class="gallery-pagination" id="galleryPagination" aria-label="Chọn ảnh">
+        <button type="button" data-slide="0" aria-label="Xem ảnh 1"></button>
+        <button type="button" data-slide="1" aria-label="Xem ảnh 2"></button>
+        <button type="button" data-slide="2" aria-label="Xem ảnh 3"></button>
+        <button type="button" data-slide="3" aria-label="Xem ảnh 4"></button>
+        <button type="button" data-slide="4" aria-label="Xem ảnh 5"></button>
+      </div>
+    </section>
+
     <section class="venue reveal">
-      <p class="venue-kicker">ĐỊA ĐIỂM CHUNG VUI</p>
-      <h3>TIỆC CƯỚI ĐƯỢC TỔ CHỨC TẠI<br>NHÀ HÀNG LÊ ĐÔNG PHƯƠNG</h3>
+      <h3 class="venue-title">ĐỊA ĐIỂM CHUNG VUI</h3>
+      <img class="ornamental-divider" src="assets/goldenline3-decoration.webp" alt="" aria-hidden="true" loading="lazy" decoding="async">
+      <h3 class="venue-heading">TIỆC CƯỚI ĐƯỢC TỔ CHỨC TẠI<br>NHÀ HÀNG LÊ ĐÔNG PHƯƠNG</h3>
+      <img class="venue-logo" src="assets/ledongphuong.svg" width="300" height="111" alt="Nhà hàng Lê Đông Phương">
       <p>491 Nguyễn Văn Quá, P. Đông Hưng Thuận, TP. HCM</p>
       <div class="map-frame">
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.6772062656505!2d106.6265784758389!3d10.835995958090527!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317529c392f0d44d%3A0x99c6ed18cb92319b!2zVHJ1bmcgVMOibSBI4buZaSBOZ2jhu4sgJiBUaeG7h2MgQ8aw4bubaSBMRSBET05HIFBIVU9ORyBOR1VZ4buETiBWxIJOIFFVw4E!5e0!3m2!1sen!2s!4v1792791886927!5m2!1sen!2s" width="600" height="450" style="border:0" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" title="Bản đồ Nhà hàng Lê Đông Phương"></iframe>
       </div>
-      <a class="map-link" href="https://maps.app.goo.gl/Cgn9EYRNBPgtA72L7" target="_blank" rel="noopener">➤&nbsp; Chỉ đường</a>
+      <a class="map-link" href="https://maps.app.goo.gl/Cgn9EYRNBPgtA72L7" target="_blank" rel="noopener">
+        <img class="map-link-icon" src="assets/google-maps.svg" width="28" height="28" alt="" aria-hidden="true">
+        <span>CHỈ ĐƯỜNG</span>
+      </a>
+      <div class="venue-closing">
+        <p class="privacy">Sự hiện diện của quý khách là niềm vinh hạnh của gia đình chúng tôi!</p>
+        <footer>© Ngọc Giao &amp; Phương Hiển</footer>
+      </div>
     </section>
-
-    <p class="privacy">Sự hiện diện của quý khách là niềm vinh hạnh của gia đình chúng tôi!</p>
-    <footer>© Ngọc Giao &amp; Phương Hiển</footer>
   </main>
 
   <dialog id="rsvpDialog">
     <form method="dialog" id="rsvpForm">
-      <button class="dialog-close" value="cancel" aria-label="Đóng">×</button>
+      <button class="dialog-close" type="button" aria-label="Đóng">×</button>
       <p class="dialog-kicker">22 · 11 · 2026</p>
       <h2>Xác nhận tham dự</h2>
       <p class="dialog-intro">Sự hiện diện của bạn sẽ làm ngày vui của chúng mình thêm trọn vẹn.</p>
@@ -111,6 +157,21 @@
       <button class="dialog-submit" value="default" type="submit">GỬI XÁC NHẬN</button>
     </form>
   </dialog>
+  <dialog class="gallery-lightbox" id="galleryLightbox" aria-label="Xem ảnh cưới phóng to">
+    <p class="gallery-lightbox-title">NGỌC GIAO <span aria-hidden="true">♥</span> PHƯƠNG HIỂN</p>
+    <button class="gallery-close" id="galleryClose" type="button" aria-label="Đóng ảnh">×</button>
+    <figure>
+      <img id="galleryLightboxImage" src="" alt="">
+    </figure>
+    <div class="gallery-controls">
+      <button class="gallery-nav gallery-prev" id="galleryPrev" type="button" aria-label="Ảnh trước">‹</button>
+      <span id="galleryCounter" aria-live="polite"></span>
+      <button class="gallery-nav gallery-next" id="galleryNext" type="button" aria-label="Ảnh tiếp theo">›</button>
+    </div>
+  </dialog>
+  <button class="scroll-top" id="scrollTopButton" type="button" aria-label="Cuộn lên đầu trang">
+    <span aria-hidden="true">↑</span>
+  </button>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
   <script src="script.js"></script>
 </body>
